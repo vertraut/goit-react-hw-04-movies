@@ -1,12 +1,10 @@
-import List from '../Components/List';
 import Section from '../Components/Section';
+import TrandMovies from '../Components/TrandMovies';
 
 export default function HomeView() {
   return (
-    <>
-      <Section>
-        <List title="Tranding today" />
-      </Section>
-    </>
+    <Section>
+      <TrandMovies />
+    </Section>
   );
 }

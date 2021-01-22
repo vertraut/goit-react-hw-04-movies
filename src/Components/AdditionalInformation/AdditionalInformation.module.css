@@ -1,0 +1,28 @@
+.list {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.list li {
+  border: 1px solid #000000;
+}
+.list li:not(:last-child) {
+  margin-right: 10px;
+  border-right: 1px solid;
+}
+
+.link {
+  display: block;
+  color: rgb(15, 15, 15);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.activLink {
+  color: rgb(206, 42, 42);
+}

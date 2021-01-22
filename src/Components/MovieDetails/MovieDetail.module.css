@@ -1,0 +1,18 @@
+.poster {
+  width: 300px;
+}
+
+.card {
+  display: flex;
+  border: 1px solid #000000;
+  padding: 20px;
+}
+
+.card div:not(:last-child) {
+  margin-right: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
