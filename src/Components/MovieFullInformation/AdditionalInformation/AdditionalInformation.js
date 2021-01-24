@@ -1,5 +1,5 @@
 import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import s from './AdditionalInformation.module.css';
 
 import Cast from '../../Cast';
@@ -41,3 +41,5 @@ export default function AdditionalInformation({ title }) {
     </>
   );
 }
+
+AdditionalInformation.propTypes = { title: PropTypes.string.isRequired };

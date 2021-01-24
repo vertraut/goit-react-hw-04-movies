@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import noPoster from '../../../img/no_poster.jpg';
 
 import s from './MovieDetail.module.css';
@@ -55,3 +57,15 @@ export default function MovieDetails({ movie }) {
     </div>
   );
 }
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      }),
+    ),
+    vote_average: PropTypes.number.isRequired,
+  }),
+};

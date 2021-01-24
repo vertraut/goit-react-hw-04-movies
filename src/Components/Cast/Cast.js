@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import s from './Cast.module.css';
 import Spinner from '../Spinner';
 
-import genderWoman from '../../img/gender_1_woman.png';
-import genderMan from '../../img/gender_2_man.png';
+import genderWomanImg from '../../img/gender_1_woman.png';
+import genderManImg from '../../img/gender_2_man.png';
 
 import status from '../../status';
 import * as moviesAPI from '../../ApiServises/themoviedb';
@@ -34,13 +34,11 @@ export default function Cast({ movieID }) {
 
   const genderImg = gender => {
     if (gender === 1) {
-      return genderWoman;
+      return genderWomanImg;
     }
 
-    return genderMan;
+    return genderManImg;
   };
-
-  // console.log('-', useParams());
 
   const listGenerate = () => {
     return cast.map(person => {
@@ -70,3 +68,5 @@ export default function Cast({ movieID }) {
     return <div>{`Возникла ошибка ${error}`}</div>;
   }
 }
+
+Cast.propTypes = { movieID: PropTypes.string.isRequired };

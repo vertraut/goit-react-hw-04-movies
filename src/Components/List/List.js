@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import s from './List.module.css';
 import noPoster from '../../img/no_poster.jpg';
@@ -37,3 +38,14 @@ export default function List({ title, array, baseUrl = '/movies' }) {
     </div>
   );
 }
+
+List.propTypes = {
+  title: PropTypes.string.isRequired,
+  array: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    }),
+  ),
+};

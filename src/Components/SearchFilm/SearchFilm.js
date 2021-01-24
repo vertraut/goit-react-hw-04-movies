@@ -6,7 +6,7 @@ import Spinner from '../Spinner';
 import * as moviesAPI from '../../ApiServises/themoviedb';
 import status from '../../status';
 
-import SearchBar from '../SearchBar';
+import SearchBar from './SearchBar';
 import List from '../List';
 
 export default function SearchFilm() {

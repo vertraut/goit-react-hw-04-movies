@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Spinner from '../Spinner';
 import status from '../../status';
@@ -52,3 +53,8 @@ export default function Reviews({ movieID, title }) {
     return <ul>{reviewsRender()}</ul>;
   }
 }
+
+Reviews.propTypes = {
+  movieID: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
