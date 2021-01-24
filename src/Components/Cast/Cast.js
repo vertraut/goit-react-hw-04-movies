@@ -41,6 +41,7 @@ export default function Cast({ movieID }) {
   };
 
   const listGenerate = () => {
+    if (cast.length === 0) return "We don't have any cast added to this movie.";
     return cast.map(person => {
       //
       const src = person.profile_path
