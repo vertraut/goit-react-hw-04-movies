@@ -1,12 +1,10 @@
 import Section from '../Components/Section';
-import MovieDetail from '../Components/MovieDetails';
-import AdditionalInformation from '../Components/AdditionalInformation';
+import MovieFullInformation from '../Components/MovieFullInformation';
 
 export default function MovieOverview() {
   return (
     <Section>
-      <MovieDetail />
-      <AdditionalInformation />
+      <MovieFullInformation />
     </Section>
   );
 }

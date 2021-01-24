@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.movie {
+  width: 350px;
+  padding: 20px;
+}
+
+.link:hover,
+.link:focus {
+  transform: scale(1.1);
+  transition-duration: 200ms;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  color: rgb(15, 15, 15);
+}
+
+.link:hover,
+.link:focus {
+  color: rgb(206, 42, 42);
+}
+
+.img {
+  width: 220px;
+  height: 330px;
+  border-radius: 6px;
+}

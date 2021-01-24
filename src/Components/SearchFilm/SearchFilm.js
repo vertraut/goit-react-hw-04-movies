@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { useRouteMatch } from 'react-router-dom';
 
+import Spinner from '../Spinner';
 import * as moviesAPI from '../../ApiServises/themoviedb';
 import status from '../../status';
 
@@ -12,30 +13,41 @@ export default function SearchFilm() {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [currentStatus, setCurrentStatus] = useState(status.IDLE);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (query === '') return;
+
     setCurrentStatus(status.PENDING);
-    setInterval(() => {
-      moviesAPI
-        .fetchMovieByKeyword(query)
-        .then(({ results }) => setMovies(results))
-        .then(() => setCurrentStatus(status.RESOLVED));
-    }, 2000);
+
+    moviesAPI
+      .fetchMovieByKeyword(query)
+      .then(({ results }) => setMovies(results))
+      .then(() => setCurrentStatus(status.RESOLVED))
+      .catch(error => {
+        setError({ error });
+        setCurrentStatus(status.REJECTED);
+      });
   }, [query]);
 
   const { url } = useRouteMatch();
 
   const searchResult = () => {
     if (currentStatus === status.IDLE) {
-      return <p>Ждем, пока юзер сделает запрос</p>;
+      return <p>Please enter your query</p>;
     }
 
     if (currentStatus === status.PENDING) {
-      return <p>Обрабатываем запрос пользователя</p>;
+      return <Spinner />;
+    }
+    if (currentStatus === status.REJECTED) {
+      return <div>{`Возникла ошибка ${error}`}</div>;
     }
 
     if (currentStatus === status.RESOLVED) {
+      if (movies.length === 0) {
+        return 'There are no movies that matched your query.';
+      }
       return (
         <List title={`Results for "${query}"`} array={movies} baseUrl={url} />
       );

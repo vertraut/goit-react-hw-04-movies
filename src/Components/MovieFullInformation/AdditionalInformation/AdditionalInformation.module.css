@@ -23,6 +23,11 @@
   padding: 10px 20px;
 }
 
+.link:hover,
+.link:focus {
+  color: rgb(206, 42, 42);
+}
+
 .activLink {
   color: rgb(206, 42, 42);
 }

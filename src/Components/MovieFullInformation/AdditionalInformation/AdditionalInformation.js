@@ -1,14 +1,14 @@
-import React from 'react';
 import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
 
 import s from './AdditionalInformation.module.css';
 
-import Cast from '../Cast';
-import Reviews from '../Reviews';
+import Cast from '../../Cast';
+import Reviews from '../../Reviews';
 
-export default function AdditionalInformation() {
+export default function AdditionalInformation({ title }) {
   const { movieID } = useParams();
   const { url } = useRouteMatch();
+
   return (
     <>
       <ul className={s.list}>
@@ -36,7 +36,7 @@ export default function AdditionalInformation() {
         <Cast movieID={movieID} />
       </Route>
       <Route path={`${url}/reviews`} exact>
-        <Reviews />
+        <Reviews movieID={movieID} title={title} />
       </Route>
     </>
   );

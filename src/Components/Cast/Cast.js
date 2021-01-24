@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 // import { useParams } from 'react-router-dom';
 
 import s from './Cast.module.css';
+import Spinner from '../Spinner';
 
 import genderWoman from '../../img/gender_1_woman.png';
 import genderMan from '../../img/gender_2_man.png';
@@ -18,6 +19,7 @@ export default function Cast({ movieID }) {
 
   useEffect(() => {
     setCurrentStatus(status.PENDING);
+
     moviesAPI
       .fetchMovieCast(movieID)
       .then(({ cast }) => {
@@ -57,7 +59,7 @@ export default function Cast({ movieID }) {
   };
 
   if (currentStatus === status.PENDING) {
-    return <div>Загружаем...</div>;
+    return <Spinner />;
   }
 
   if (currentStatus === status.RESOLVED) {
