@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 
 import s from './Cast.module.css';
 
+import genderWoman from '../../img/gender_1_woman.png';
+import genderMan from '../../img/gender_2_man.png';
+
 import status from '../../status';
 import * as moviesAPI from '../../ApiServises/themoviedb';
 
@@ -11,7 +14,7 @@ export default function Cast({ movieID }) {
   const [currentStatus, setCurrentStatus] = useState(status.PENDING);
   const [error, setError] = useState(null);
 
-  const photoUrl = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2';
+  const photoUrl = 'https://www.themoviedb.org/t/p/w132_and_h132_face';
 
   useEffect(() => {
     setCurrentStatus(status.PENDING);
@@ -27,6 +30,14 @@ export default function Cast({ movieID }) {
       });
   }, [movieID]);
 
+  const genderImg = gender => {
+    if (gender === 1) {
+      return genderWoman;
+    }
+
+    return genderMan;
+  };
+
   // console.log('-', useParams());
 
   const listGenerate = () => {
@@ -34,7 +45,7 @@ export default function Cast({ movieID }) {
       //
       const src = person.profile_path
         ? `${photoUrl}${person.profile_path}`
-        : 'https://img2.freepng.ru/20180521/ocp/kisspng-computer-icons-user-profile-avatar-french-people-5b0365e4f1ce65.9760504415269493489905.jpg';
+        : genderImg(person.gender);
 
       return (
         <li key={person.id}>
