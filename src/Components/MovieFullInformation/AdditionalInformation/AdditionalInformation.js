@@ -7,7 +7,7 @@ import Reviews from '../../Reviews';
 
 export default function AdditionalInformation({ title }) {
   const { movieID } = useParams();
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
 
   return (
     <>
@@ -32,10 +32,10 @@ export default function AdditionalInformation({ title }) {
         </li>
       </ul>
 
-      <Route path={`${url}/cast`} exact>
+      <Route path={`${path}/cast`} exact>
         <Cast movieID={movieID} />
       </Route>
-      <Route path={`${url}/reviews`} exact>
+      <Route path={`${path}/reviews`} exact>
         <Reviews movieID={movieID} title={title} />
       </Route>
     </>
