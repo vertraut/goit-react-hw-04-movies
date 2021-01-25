@@ -1,38 +1,46 @@
+import { lazy, Suspense } from 'react';
+
 import { Route, Switch } from 'react-router-dom';
 import 'modern-normalize/modern-normalize.css';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import Loader from 'react-loader-spinner';
 
+import Spinner from './Components/Spinner';
 import Navigation from './Components/Navigation';
 import './App.css';
 
-import HomeView from './views/HomeView';
-import MoviesView from './views/MoviesView';
-import MovieOverview from './views/MovieOverviewView';
-<Loader type="Circles" color="#00BFFF" height={80} width={80} />;
-<Loader type="Circles" color="#00BFFF" height={80} width={80} />;
+const HomeView = lazy(() =>
+  import('./views/HomeView.js' /* webpackChunkName: "HomeView"*/),
+);
+const MoviesView = lazy(() =>
+  import('./views/MoviesView.js' /* webpackChunkName: "MoviesView"*/),
+);
+const MovieOverview = lazy(() =>
+  import('./views/MovieOverviewView.js' /* webpackChunkName: "MovieOverview"*/),
+);
 
 function App() {
   return (
     <div className="App">
       <Navigation />
-      <Switch>
-        <Route path="/" exact>
-          <HomeView />
-        </Route>
+      <Suspense fallback={<Spinner />}>
+        <Switch>
+          <Route path="/" exact>
+            <HomeView />
+          </Route>
 
-        <Route path="/movies" exact>
-          <MoviesView />
-        </Route>
+          <Route path="/movies" exact>
+            <MoviesView />
+          </Route>
 
-        <Route path="/movies/:movieID">
-          <MovieOverview />
-        </Route>
+          <Route path="/movies/:movieID">
+            <MovieOverview />
+          </Route>
 
-        <Route>
-          <HomeView />
-        </Route>
-      </Switch>
+          <Route>
+            <HomeView />
+          </Route>
+        </Switch>
+      </Suspense>
     </div>
   );
 }

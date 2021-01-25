@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import s from './Cast.module.css';
 import Spinner from '../Spinner';
 
-import genderWomanImg from '../../img/gender_1_woman.png';
-import genderManImg from '../../img/gender_2_man.png';
+import genderWomanImg from '../../img/gender_1_woman.jpg';
+import genderManImg from '../../img/gender_2_man.jpg';
 
 import status from '../../status';
 import * as moviesAPI from '../../ApiServises/themoviedb';
