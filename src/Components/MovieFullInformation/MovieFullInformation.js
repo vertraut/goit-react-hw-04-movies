@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
+import BackBtn from '../BackBtn';
 import MovieDetails from './MovieDetails';
 import AdditionalInformation from './AdditionalInformation';
 
@@ -10,6 +11,11 @@ import status from '../../status';
 
 export default function MovieFullInformation() {
   const { movieID } = useParams();
+  const location = useLocation();
+  console.log(
+    '🚀 ~ file: MovieFullInformation.js ~ line 15 ~ MovieFullInformation ~ location',
+    location,
+  );
 
   const [movie, setMovie] = useState(null);
   const [currentStatus, setCurrentStatus] = useState(status.PENDING);
@@ -37,6 +43,7 @@ export default function MovieFullInformation() {
   if (currentStatus === status.RESOLVED) {
     return (
       <div>
+        <BackBtn title={location.state.from.title} />
         <MovieDetails movie={movie} />
         <AdditionalInformation title={movie.title} />
       </div>

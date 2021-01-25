@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import s from './List.module.css';
@@ -8,6 +8,7 @@ import noPoster from '../../img/no_poster.jpg';
 export default function List({ title, array, baseUrl = '/movies' }) {
   //
   //
+  const location = useLocation();
 
   const poster = poster => {
     if (!poster) {
@@ -23,7 +24,15 @@ export default function List({ title, array, baseUrl = '/movies' }) {
         {array.map(item => {
           return (
             <li key={item.id} className={s.movie}>
-              <Link to={`${baseUrl}/${item.id}`} className={s.link}>
+              <Link
+                to={{
+                  pathname: `${baseUrl}/${item.id}`,
+                  state: {
+                    from: { location, title },
+                  },
+                }}
+                className={s.link}
+              >
                 <img
                   src={poster(item.poster_path)}
                   alt={item.title}
