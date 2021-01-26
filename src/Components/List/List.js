@@ -3,11 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import slugify from '../../Servises/slugify';
+import routes from '../../routes';
 
 import s from './List.module.css';
 import noPoster from '../../img/no_poster.jpg';
 
-export default function List({ title, array, baseUrl = '/movies' }) {
+export default function List({ title, array, baseUrl = routes.movies }) {
   //
   //
   const location = useLocation();

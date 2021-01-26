@@ -1,6 +1,8 @@
 import { Route, NavLink, useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import s from './AdditionalInformation.module.css';
+import routes from '../../../routes';
 
 import Cast from '../../Cast';
 import Reviews from '../../Reviews';
@@ -14,7 +16,7 @@ export default function AdditionalInformation({ title, linkState, movieID }) {
         <li>
           <NavLink
             to={{
-              pathname: `${url}/cast`,
+              pathname: `${url}${routes.cast}`,
               state: { from: linkState },
             }}
             className={s.link}
@@ -26,7 +28,7 @@ export default function AdditionalInformation({ title, linkState, movieID }) {
         <li>
           <NavLink
             to={{
-              pathname: `${url}/reviews`,
+              pathname: `${url}${routes.reviews}`,
               state: { from: linkState },
             }}
             className={s.link}
@@ -37,10 +39,10 @@ export default function AdditionalInformation({ title, linkState, movieID }) {
         </li>
       </ul>
 
-      <Route path={`${path}/cast`} exact>
+      <Route path={`${path}${routes.cast}`} exact>
         <Cast movieID={movieID} />
       </Route>
-      <Route path={`${path}/reviews`} exact>
+      <Route path={`${path}${routes.reviews}`} exact>
         <Reviews movieID={movieID} title={title} />
       </Route>
     </>

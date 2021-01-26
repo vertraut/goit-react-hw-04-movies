@@ -7,6 +7,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Spinner from './Components/Spinner';
 import Navigation from './Components/Navigation';
 import './App.css';
+import routes from './routes';
 
 const HomeView = lazy(() =>
   import('./views/HomeView.js' /* webpackChunkName: "HomeView"*/),
@@ -24,15 +25,15 @@ function App() {
       <Navigation />
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <Route path="/" exact>
+          <Route path={routes.home} exact>
             <HomeView />
           </Route>
 
-          <Route path="/movies" exact>
+          <Route path={routes.movies} exact>
             <MoviesView />
           </Route>
 
-          <Route path="/movies/:slug">
+          <Route path={routes.movieDetails}>
             <MovieOverview />
           </Route>
 
