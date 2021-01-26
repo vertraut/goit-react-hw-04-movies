@@ -17,6 +17,10 @@ export default function List({ title, array, baseUrl = '/movies' }) {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${poster}`;
   };
 
+  const year = movie => {
+    return movie.release_date.split('-', 1);
+  };
+
   return (
     <div>
       <h2>{title}</h2>
@@ -39,6 +43,7 @@ export default function List({ title, array, baseUrl = '/movies' }) {
                   className={s.img}
                 />
                 <h3> {item.title}</h3>
+                <span>{year(item)}</span>
               </Link>
             </li>
           );

@@ -5,16 +5,21 @@ import s from './AdditionalInformation.module.css';
 import Cast from '../../Cast';
 import Reviews from '../../Reviews';
 
-export default function AdditionalInformation({ title }) {
+export default function AdditionalInformation({ title, linkState }) {
   const { movieID } = useParams();
   const { url, path } = useRouteMatch();
+
+  console.log('-', linkState);
 
   return (
     <>
       <ul className={s.list}>
         <li>
           <NavLink
-            to={`${url}/cast`}
+            to={{
+              pathname: `${url}/cast`,
+              state: { from: linkState },
+            }}
             className={s.link}
             activeClassName={s.activLink}
           >
@@ -23,7 +28,10 @@ export default function AdditionalInformation({ title }) {
         </li>
         <li>
           <NavLink
-            to={`${url}/reviews`}
+            to={{
+              pathname: `${url}/reviews`,
+              state: { from: linkState },
+            }}
             className={s.link}
             activeClassName={s.activLink}
           >

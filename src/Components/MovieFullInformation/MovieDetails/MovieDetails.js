@@ -5,11 +5,16 @@ import noPoster from '../../../img/no_poster.jpg';
 import s from './MovieDetail.module.css';
 
 export default function MovieDetails({ movie }) {
+  console.log(movie);
   const poster = poster => {
     if (!poster) {
       return noPoster;
     }
     return `https://image.tmdb.org/t/p/w500/${poster}`;
+  };
+
+  const year = () => {
+    return movie.release_date.split('-', 1);
   };
 
   const raiting = () => {
@@ -41,7 +46,9 @@ export default function MovieDetails({ movie }) {
         />
       </div>
       <div>
-        <h2 className={s.title}>{movie.title}</h2>
+        <h2 className={s.title}>
+          {movie.title} ({year()})
+        </h2>
 
         {raiting()}
 
