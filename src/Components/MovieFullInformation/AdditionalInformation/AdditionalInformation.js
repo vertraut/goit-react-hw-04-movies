@@ -11,7 +11,6 @@ export default function AdditionalInformation({ title, linkState, movieID }) {
   const { url, path } = useRouteMatch();
 
   const tabsName = ['Cast', 'Reviews'];
-  const ComponentCast = tabsName[0];
 
   return (
     <>

@@ -21,7 +21,8 @@ export default function List({ title, array, baseUrl = routes.movies }) {
   };
 
   const year = movie => {
-    return movie.release_date.split('-', 1);
+    if (movie.release_date)
+      return <span>{movie.release_date.split('-', 1)}</span>;
   };
 
   return (
@@ -48,8 +49,7 @@ export default function List({ title, array, baseUrl = routes.movies }) {
                   className={s.img}
                 />
                 <h3> {item.title}</h3>
-
-                <span>{year(item)}</span>
+                {year(item)}
               </Link>
             </li>
           );

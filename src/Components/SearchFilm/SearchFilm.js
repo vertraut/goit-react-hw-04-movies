@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, useLocation } from 'react-router-dom';
 
 import Spinner from '../Spinner';
 import * as moviesAPI from '../../Servises/apiServises/themoviedb';
@@ -13,6 +13,16 @@ export default function SearchFilm() {
   const [movies, setMovies] = useState([]);
   const [currentStatus, setCurrentStatus] = useState(status.IDLE);
   const [error, setError] = useState(null);
+
+  const location = useLocation();
+
+  const queryFromUrl = new URLSearchParams(location.search).get('query');
+
+  useEffect(() => {
+    if (!query && queryFromUrl) {
+      setQuery(queryFromUrl);
+    }
+  }, [query, queryFromUrl]);
 
   useEffect(() => {
     if (query === '') return;

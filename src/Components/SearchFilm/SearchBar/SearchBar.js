@@ -1,8 +1,13 @@
 import { useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+
 import s from './SearchBar.module.css';
 
 export default function SearchBar({ onSubmit }) {
   const [query, setQuery] = useState('');
+
+  const history = useHistory();
+  const location = useLocation();
 
   const handleChange = e => {
     setQuery(e.target.value);
@@ -12,6 +17,7 @@ export default function SearchBar({ onSubmit }) {
     e.preventDefault();
     const trimQuery = query.trim();
     if (trimQuery === '') return;
+    history.push({ ...location, search: `query=${query}` });
     onSubmit(trimQuery);
   };
 
@@ -23,12 +29,12 @@ export default function SearchBar({ onSubmit }) {
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search movie"
+          placeholder="Search movie..."
           value={query}
           onChange={handleChange}
         />
         <button type="submit" className={s.button}>
-          <span className="SearchForm-button-label">Search</span>
+          Search
         </button>
       </form>
     </div>

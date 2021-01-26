@@ -13,7 +13,8 @@ export default function MovieDetails({ movie }) {
   };
 
   const year = () => {
-    return movie.release_date.split('-', 1);
+    if (movie.release_date)
+      return <span>({movie.release_date.split('-', 1)})</span>;
   };
 
   const raiting = () => {
@@ -46,7 +47,7 @@ export default function MovieDetails({ movie }) {
       </div>
       <div>
         <h2 className={s.title}>
-          {movie.title} ({year()})
+          {movie.title} {year()}
         </h2>
 
         {raiting()}
