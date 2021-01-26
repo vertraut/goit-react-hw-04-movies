@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Spinner from '../Spinner';
 import status from '../../status';
-import * as moviesAPI from '../../ApiServises/themoviedb';
+import * as moviesAPI from '../../Servises/ApiServises/themoviedb';
 
 export default function Reviews({ movieID, title }) {
   const [reviews, setReviews] = useState(null);

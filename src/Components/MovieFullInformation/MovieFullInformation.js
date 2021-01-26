@@ -6,7 +6,7 @@ import MovieDetails from './MovieDetails';
 import AdditionalInformation from './AdditionalInformation';
 
 import Spinner from '../Spinner';
-import * as moviesAPI from '../../ApiServises/themoviedb';
+import * as moviesAPI from '../../Servises/ApiServises/themoviedb';
 import status from '../../status';
 
 export default function MovieFullInformation() {

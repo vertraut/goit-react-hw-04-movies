@@ -2,11 +2,14 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import slugify from '../../Servises/Slugify';
+
 import s from './List.module.css';
 import noPoster from '../../img/no_poster.jpg';
 
 export default function List({ title, array, baseUrl = '/movies' }) {
   //
+  console.log(slugify('Привет меня зовут Вадим'));
   //
   const location = useLocation();
 

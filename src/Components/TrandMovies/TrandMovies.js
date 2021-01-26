@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import * as moviesAPI from '../../ApiServises/themoviedb';
+import * as moviesAPI from '../../Servises/ApiServises/themoviedb';
 
 import Spinner from '../Spinner';
 import List from '../List';
