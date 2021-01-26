@@ -62,4 +62,5 @@ List.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ),
+  baseUrl: PropTypes.string,
 };

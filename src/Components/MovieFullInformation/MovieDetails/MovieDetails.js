@@ -5,7 +5,6 @@ import noPoster from '../../../img/no_poster.jpg';
 import s from './MovieDetail.module.css';
 
 export default function MovieDetails({ movie }) {
-  console.log(movie);
   const poster = poster => {
     if (!poster) {
       return noPoster;
@@ -74,5 +73,6 @@ MovieDetails.propTypes = {
       }),
     ),
     vote_average: PropTypes.number.isRequired,
+    release_date: PropTypes.string,
   }),
 };

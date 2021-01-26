@@ -9,8 +9,6 @@ export default function AdditionalInformation({ title, linkState }) {
   const { movieID } = useParams();
   const { url, path } = useRouteMatch();
 
-  console.log('-', linkState);
-
   return (
     <>
       <ul className={s.list}>
@@ -50,4 +48,7 @@ export default function AdditionalInformation({ title, linkState }) {
   );
 }
 
-AdditionalInformation.propTypes = { title: PropTypes.string.isRequired };
+AdditionalInformation.propTypes = {
+  title: PropTypes.string.isRequired,
+  linkState: PropTypes.object,
+};
