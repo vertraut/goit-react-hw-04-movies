@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
 import Spinner from '../Spinner';
-import * as moviesAPI from '../../Servises/ApiServises/themoviedb';
+import * as moviesAPI from '../../Servises/apiServises/themoviedb';
 import status from '../../status';
 
 import SearchBar from './SearchBar';

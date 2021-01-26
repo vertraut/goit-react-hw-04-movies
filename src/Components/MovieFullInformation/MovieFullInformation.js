@@ -4,19 +4,23 @@ import { useParams, useLocation, useHistory } from 'react-router-dom';
 import BackBtn from '../BackBtn';
 import MovieDetails from './MovieDetails';
 import AdditionalInformation from './AdditionalInformation';
+import getIdFromSlug from '../../Servises/getIdFromSlug';
 
 import Spinner from '../Spinner';
-import * as moviesAPI from '../../Servises/ApiServises/themoviedb';
+import * as moviesAPI from '../../Servises/apiServises/themoviedb';
 import status from '../../status';
 
 export default function MovieFullInformation() {
-  const { movieID } = useParams();
+  const { slug } = useParams();
   const location = useLocation();
   const history = useHistory();
 
   const [movie, setMovie] = useState(null);
   const [currentStatus, setCurrentStatus] = useState(status.PENDING);
   const [error, setError] = useState(null);
+
+  const movieID = getIdFromSlug(slug)[0];
+  console.log(movieID);
 
   useEffect(() => {
     moviesAPI
@@ -74,7 +78,11 @@ export default function MovieFullInformation() {
       <div>
         <BackBtn title={btnGoBackTitle()} onClick={onGoBack} />
         <MovieDetails movie={movie} />
-        <AdditionalInformation title={movie.title} linkState={linkState()} />
+        <AdditionalInformation
+          movieID={movieID}
+          title={movie.title}
+          linkState={linkState()}
+        />
       </div>
     );
   }

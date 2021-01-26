@@ -2,14 +2,13 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import slugify from '../../Servises/Slugify';
+import slugify from '../../Servises/slugify';
 
 import s from './List.module.css';
 import noPoster from '../../img/no_poster.jpg';
 
 export default function List({ title, array, baseUrl = '/movies' }) {
   //
-  console.log(slugify('Привет меня зовут Вадим'));
   //
   const location = useLocation();
 
@@ -33,7 +32,9 @@ export default function List({ title, array, baseUrl = '/movies' }) {
             <li key={item.id} className={s.movie}>
               <Link
                 to={{
-                  pathname: `${baseUrl}/${item.id}`,
+                  pathname: `${baseUrl}/${slugify(
+                    `${item.title} ${item.id}}`,
+                  )}`,
                   state: {
                     from: { location, title },
                   },
@@ -46,6 +47,7 @@ export default function List({ title, array, baseUrl = '/movies' }) {
                   className={s.img}
                 />
                 <h3> {item.title}</h3>
+
                 <span>{year(item)}</span>
               </Link>
             </li>

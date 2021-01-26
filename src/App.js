@@ -32,7 +32,7 @@ function App() {
             <MoviesView />
           </Route>
 
-          <Route path="/movies/:movieID">
+          <Route path="/movies/:slug">
             <MovieOverview />
           </Route>
 

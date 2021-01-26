@@ -8,7 +8,7 @@ import genderWomanImg from '../../img/gender_1_woman.jpg';
 import genderManImg from '../../img/gender_2_man.jpg';
 
 import status from '../../status';
-import * as moviesAPI from '../../Servises/ApiServises/themoviedb';
+import * as moviesAPI from '../../Servises/apiServises/themoviedb';
 
 export default function Cast({ movieID }) {
   const [cast, setCast] = useState([]);

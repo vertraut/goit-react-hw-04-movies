@@ -1,12 +1,11 @@
-import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
+import { Route, NavLink, useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import s from './AdditionalInformation.module.css';
 
 import Cast from '../../Cast';
 import Reviews from '../../Reviews';
 
-export default function AdditionalInformation({ title, linkState }) {
-  const { movieID } = useParams();
+export default function AdditionalInformation({ title, linkState, movieID }) {
   const { url, path } = useRouteMatch();
 
   return (
