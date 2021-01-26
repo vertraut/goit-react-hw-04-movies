@@ -10,39 +10,32 @@ import Reviews from '../../Reviews';
 export default function AdditionalInformation({ title, linkState, movieID }) {
   const { url, path } = useRouteMatch();
 
+  const tabsName = ['Cast', 'Reviews'];
+  const ComponentCast = tabsName[0];
+
   return (
     <>
       <ul className={s.list}>
-        <li>
-          <NavLink
-            to={{
-              pathname: `${url}${routes.cast}`,
-              state: { from: linkState },
-            }}
-            className={s.link}
-            activeClassName={s.activLink}
-          >
-            Cast
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={{
-              pathname: `${url}${routes.reviews}`,
-              state: { from: linkState },
-            }}
-            className={s.link}
-            activeClassName={s.activLink}
-          >
-            Reviews
-          </NavLink>
-        </li>
+        {tabsName.map((tab, index) => (
+          <li key={index}>
+            <NavLink
+              to={{
+                pathname: `${url}${routes[tab.toLowerCase()]}`,
+                state: { from: linkState },
+              }}
+              className={s.link}
+              activeClassName={s.activLink}
+            >
+              {tab}
+            </NavLink>
+          </li>
+        ))}
       </ul>
 
-      <Route path={`${path}${routes.cast}`} exact>
+      <Route path={`${path}${routes.cast}`}>
         <Cast movieID={movieID} />
       </Route>
-      <Route path={`${path}${routes.reviews}`} exact>
+      <Route path={`${path}${routes.reviews}`}>
         <Reviews movieID={movieID} title={title} />
       </Route>
     </>
@@ -52,4 +45,5 @@ export default function AdditionalInformation({ title, linkState, movieID }) {
 AdditionalInformation.propTypes = {
   title: PropTypes.string.isRequired,
   linkState: PropTypes.object,
+  movieID: PropTypes.string.isRequired,
 };

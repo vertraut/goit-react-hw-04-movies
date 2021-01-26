@@ -20,7 +20,6 @@ export default function MovieFullInformation() {
   const [error, setError] = useState(null);
 
   const movieID = getIdFromSlug(slug)[0];
-  console.log(movieID);
 
   useEffect(() => {
     moviesAPI
